@@ -11,6 +11,8 @@ while(c == "y"):
     if(cpu_point < 3 and player_point < 3):
         Unplayable = True
         while(Unplayable):
+            print("Score: CPU - "+str(cpu_point) +" | Player - " +str(player_point))
+            print("=-=-=-=-=")
             choice = input("Round %s \n1- Rock \n2- Paper\n3- Scissors\n" % round)
             if not (choice == "1" or choice == "2" or choice == "3"):
                 print("Please provide a valid option !")

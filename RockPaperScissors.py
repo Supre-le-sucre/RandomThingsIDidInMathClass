@@ -12,14 +12,11 @@ while(c == "y"):
         Unplayable = True
         while(Unplayable):
             choice = input("Round %s \n1- Rock \n2- Paper\n3- Scissors\n" % round)
-            if not choice.isnumeric():
+            if not (choice == "1" or choice == "2" or choice == "3"):
                 print("Please provide a valid option !")
             else:
                 choice = int(choice)
-                if(choice>3 or choice<=0):
-                    print("Please provide a valid option !")
-                else:
-                    Unplayable = False
+                Unplayable = False
         if(choice == 1): string = "rock"
         if(choice == 2): string = "paper"
         if(choice == 3): string = "scissors"

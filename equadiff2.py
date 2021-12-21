@@ -73,5 +73,3 @@ def den(fraction):
     else:
         den = 1
     return int(den)
-
-print(equadiff(6,3,2))

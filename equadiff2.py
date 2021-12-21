@@ -15,7 +15,7 @@ def equadiff(a,b=0,c=1,x0=0,y0=0):
             else:
                 return 'y=' + str(y0) + 'e^' + a + '(x-' + str(abs(x0)) + ')'
         else:
-            k = simplify(y0*den(b)*num(a)-num(b)*den(a),den(b)*num(a))
+            k = simplify(y0*den(b)*num(a)+num(b)*den(a),den(b)*num(a))
 
             if(x0<0):
                 return 'y='+k+'e^('+ str(a) + '(x+' + str(abs(x0)) + '))'+simplify(-(num(b)*den(a)),den(b)*num(a),True)

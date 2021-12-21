@@ -1,6 +1,6 @@
-print("How to use equadiff(a,b,x0,y0) ?\nThe variables are here:\ny'+ay = b\ny(x0)=y0\n\nBy default b=0\nx0 and y0 are undefined")
-def equadiff(a,b=0,x0=0,y0=0):
-    a=-a
+print("How to use equadiff(a,b,c,x0,y0) ?\nThe variables are here:\ncy'+ay = b\ny(x0)=y0\n\nBy default b=0 and c=1\nx0 and y0 are undefined")
+def equadiff(a,b=0,c=1,x0=0,y0=0):
+    a=simplify(-a,c)
     if(x0==0 and y0==0):
         print("for all k in R")
         if(b == 0):
@@ -31,6 +31,8 @@ def gcd(a,b):
     return common
 
 def simplify(a,b,sign=False):
+    a=int(a)
+    b=int(b)
     if(sign):
         sign="+"
         if(a<0 and b<0): sign="+"
@@ -50,6 +52,3 @@ def simplify(a,b,sign=False):
         b=int(b/divise)
     if(b == 1 or b==-1): return sign+str(abs(a))
     else: return sign+'('+str(abs(a))+'/'+str(abs(b))+')'
-
-
-print(equadiff(10,-67))

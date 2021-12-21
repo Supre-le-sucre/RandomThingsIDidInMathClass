@@ -1,4 +1,4 @@
-print("How to use equadiff(a,b,c,x0,y0) ?\nThe variables are here:\ny'+ay = b\ny(x0)=y0\n\nBy default b=0 and c=1\nx0 and y0 are undefined")
+print("How to use equadiff(a,b,c,x0,y0) ?\nThe variables are here:\ncy'+ay = b\ny(x0)=y0\n\nBy default b=0 and c=1\nx0 and y0 are undefined")
 def equadiff(a,b=0,c=1,x0=0,y0=0):
     a=simplify(-a,c)
     if(b!=0): b = simplify(b, c)

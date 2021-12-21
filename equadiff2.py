@@ -20,7 +20,7 @@ def equadiff(a,b=0,c=1,x0=0,y0=0):
             if(x0<0):
                 return 'y='+k+'e^('+ str(a) + '(x+' + str(abs(x0)) + '))'+simplify(-(num(b)*den(a)),den(b)*num(a),True)
             else:
-                return 'y='+k+'e^(' + str(a) + '(x-' + str(abs(x0)) + '))'+simplify(-(num(b)*den(a),den(b)*num(a),True)
+                return 'y='+k+'e^(' + str(a) + '(x-' + str(abs(x0)) + '))'+simplify(-(num(b)*den(a)),den(b)*num(a),True)
 
 
 def gcd(a,b):
@@ -73,3 +73,5 @@ def den(fraction):
     else:
         den = 1
     return int(den)
+
+print(equadiff(6,3,2))

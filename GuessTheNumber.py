@@ -1,10 +1,11 @@
 import time
 from random import randint
 again = "y"
+print("You have 30 seconds to guess \nthe number I picked ! \n=========\nIt's between 1 and 1000 included !")
+input("Press any key to start the game !")
 while(again == "y"):
     endTime = time.monotonic()+30
     number = randint(0,1000)
-    print("You have 30 seconds to guess \nthe number I picked ! \n=========\nIt's between 1 and 1000 included !")
     guessed = False
     tries = 0
     while ((time.monotonic() < endTime) and not guessed):
@@ -27,5 +28,3 @@ while(again == "y"):
         print("You tried to guess it %s times" %tries)
     again = input("Want to play again ? (y/n)")
 print("See You next time !")
-
-

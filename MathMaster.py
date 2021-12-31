@@ -124,7 +124,7 @@ def game():
                     break
                 mixOf += str(gamemodesSelected[k]) + " "
             print("=-RESULT-=\nIn gamemode 6 (Mix of "+mixOf+") You scored " + str(points) + " points in " + str(wantedTime) + " seconds ! Congrats !\n=-=-=")
-        playAgain = input("Want to play again ? (y/n)")
+        playAgain = input("Want to play again ? (y/n)\n")
     print("See you next time !")
 
 

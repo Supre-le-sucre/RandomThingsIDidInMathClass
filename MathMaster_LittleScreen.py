@@ -5,6 +5,7 @@ def game():
     playAgain = "y"
     while(playAgain == "y"):
         points = 0
+        total = 0
         print("In this game, you will have to\ncomplete a simple arithmetic\nequation between 2 numbers\n(between 1 and 9 included)\nas fast as possible !")
         choice = makeChoice()
         print("Gamemode set to %s" %choice)
@@ -17,7 +18,8 @@ def game():
             endTime = time.monotonic() + wantedTime
             while(time.monotonic() < endTime):
                 points += gamemode(1)
-            print("=-RESULT-=\nIn gamemode 1\nYou scored " + str(points) + " points in " + str(wantedTime) + "s !\nCongrats !")
+                total += 1
+            print("=-RESULT-=\nIn gamemode 1\nYou scored " + str(points)+"/"+ str(total) + " points in " + str(wantedTime) + "s !\nCongrats !")
 
         if(choice == 2):
 
@@ -26,7 +28,8 @@ def game():
             endTime = time.monotonic() + wantedTime
             while(time.monotonic() < endTime):
                 points += gamemode(2)
-            print("=-RESULT-=\nIn gamemode 2\nYou scored " + str(points) + " points in " + str(wantedTime) + "s !\nCongrats !")
+                total += 1
+            print("=-RESULT-=\nIn gamemode 2\nYou scored " + str(points)+"/"+ str(total) + " points in " + str(wantedTime) + "s !\nCongrats !")
 
         elif(choice == 3):
 
@@ -35,7 +38,8 @@ def game():
             endTime = time.monotonic() + wantedTime
             while(time.monotonic() < endTime):
                 points += gamemode(3)
-            print("=-RESULT-=\nIn gamemode 3\nYou scored " + str(points) + " points in " + str(wantedTime) + "s !\nCongrats !")
+                total += 1
+            print("=-RESULT-=\nIn gamemode 3\nYou scored " + str(points)+"/"+ str(total) + " points in " + str(wantedTime) + "s !\nCongrats !")
 
         elif(choice == 4):
 
@@ -48,7 +52,8 @@ def game():
             endTime = time.monotonic() + wantedTime
             while(time.monotonic() < endTime):
                 points += gamemode(4)
-            print("=-RESULT-=\nIn gamemode 4\nYou scored " + str(points) + " points in " + str(wantedTime) + "s !\nCongrats !")
+                total += 1
+            print("=-RESULT-=\nIn gamemode 4\nYou scored " + str(points)+"/"+ str(total) + " points in " + str(wantedTime) + "s !\nCongrats !")
 
         elif(choice == 5):
 
@@ -61,7 +66,8 @@ def game():
             endTime = time.monotonic() + wantedTime
             while(time.monotonic() < endTime):
                 points += gamemode(5)
-            print("=-RESULT-=\nIn gamemode 5\nYou scored " + str(points) + " points in " + str(wantedTime) + "s !\nCongrats !")
+                total += 1
+            print("=-RESULT-=\nIn gamemode 5\nYou scored " + str(points)+"/"+ str(total) + " points in " + str(wantedTime) + "s !\nCongrats !")
 
 
         elif(choice == 6):
@@ -139,6 +145,7 @@ def game():
             while(time.monotonic() < endTime):
                 selection = randint(0,len(gamemodesSelected)-1)
                 points += gamemode(gamemodesSelected[selection])
+                total += 1
 
             mixOf=""
             for k in range(len(gamemodesSelected)):
@@ -146,7 +153,7 @@ def game():
                     mixOf+="and "+str(gamemodesSelected[k])
                     break
                 mixOf += str(gamemodesSelected[k]) + " "
-            print("=-RESULT-=\nIn gamemode 6\n(Mix of "+mixOf+")\nYou scored " + str(points) + " points in " + str(wantedTime) + "s !\nCongrats !\n=-=-=")
+            print("=-RESULT-=\nIn gamemode 6\n(Mix of "+mixOf+")\nYou scored " + str(points)+"/"+ str(total) + " points in " + str(wantedTime) + "s !\nCongrats !\n=-=-=")
         playAgain = input("Want to play again ? (y/n)\n")
     print("See you next time !")
 
@@ -230,7 +237,6 @@ def gamemode(gamemode):
     a = randint(1, 9)
     b = randint(1, 9)
     operation = randint(1, 3)
-    operation = 3
     result = 0
     if (operation == 1):
         operation = " + "

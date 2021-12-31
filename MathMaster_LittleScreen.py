@@ -171,11 +171,11 @@ def makeChoice():
     while (invalid):
         choice = input("Select a Gamemode ! \n1- Answer 2- Sign\n3- Number 4- Both\n5- All Blank ! 6- Mix\n")
         if not (isNumeral(choice)):
-            print("Choice must be a positive number \n=========")
+            print("Choice must be a positive\nnumber \n=========")
         else:
             choice = int(choice)
             if (choice == 0 or choice > 6):
-                print("Choice must between 1 and 6 included")
+                print("Choice must between 1 and 6\nincluded")
             else:
                 invalid = False
     return choice

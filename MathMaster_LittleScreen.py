@@ -21,7 +21,7 @@ def game():
 
         if(choice == 2):
 
-            print("In this gamemode, operations only are +, - or *")
+            print("In this gamemode \noperations only are +, - or *")
             input("Type any key to begin !")
             endTime = time.monotonic() + wantedTime
             while(time.monotonic() < endTime):
@@ -30,7 +30,7 @@ def game():
 
         elif(choice == 3):
 
-            print("In this gamemode, answers must be between 1 and 9 included")
+            print("In this gamemode, answers must\nbe between 1 and 9 included")
             input("Type any key to begin !")
             endTime = time.monotonic() + wantedTime
             while(time.monotonic() < endTime):
@@ -39,10 +39,10 @@ def game():
 
         elif(choice == 4):
 
-            print("In this gamemode, you must provide the valid operation\n"
+            print("In this gamemode \nprovide a valid operation\n"
                   "in order to get to the answer\n"
                   "-operations only are +, - or *\n"
-                  "-numbers must be between 1 and 9 included\n")
+                  "-numbers between 1 and 9 included\n")
 
             input("Type any key to begin !")
             endTime = time.monotonic() + wantedTime
@@ -52,11 +52,10 @@ def game():
 
         elif(choice == 5):
 
-            print("In this gamemode, you must provide a valid operation\n"
-                  "BETWEEN 2 NUMBERS !\n"
+            print("In this gamemode \nprovide a valid operation\n"
                   "in order to get to the answer\n"
                   "-operations only are +, - or *\n"
-                  "-numbers must be between 1 and 9 included\n")
+                  "-numbers between 1 and 9 included\n")
 
             input("Type any key to begin !")
             endTime = time.monotonic() + wantedTime
@@ -203,6 +202,7 @@ def gamemode(gamemode):
     a = randint(1, 9)
     b = randint(1, 9)
     operation = randint(1, 3)
+    operation = 3
     result = 0
     if (operation == 1):
         operation = " + "
@@ -213,6 +213,7 @@ def gamemode(gamemode):
     else:
         operation = " * "
         result = a * b
+    result = 0
     if(gamemode == 1):
         answer = input(str(a) + operation + str(b) + " = ?\n")
         correct = False
@@ -246,11 +247,14 @@ def gamemode(gamemode):
         correct = False
         if(isNumeral(answer)):
             answer = int(answer)
-            if(operation == " + "):
+            if (answer == 0):
+                print("0 is not valid !")
+                correct = False
+            elif(operation == " + "):
                 correct = a + answer == result
             elif (operation == " - "):
                 correct = a - answer == result
-            if (operation == " * "):
+            elif (operation == " * "):
                 correct = a * answer == result
 
         if(correct):
@@ -268,7 +272,10 @@ def gamemode(gamemode):
 
             if(isNumeral(answer[1])):
                 number = int(answer[1])
-                if(answer[0]=="+"):
+                if(number == 0):
+                    print("0 is not valid !")
+                    correct = False
+                elif(answer[0]=="+"):
                     correct = a + number == result
                 elif(answer[0]=="-"):
                     correct = a - number == result
@@ -291,7 +298,10 @@ def gamemode(gamemode):
             if(isNumeral(answer[0]) and isNumeral(answer[2])):
                 number1 = int(answer[0])
                 number2 = int(answer[2])
-                if(answer[1]=="+"):
+                if(number1 == 0 or number2 == 0):
+                    print("0 is not valid !")
+                    correct = False
+                elif(answer[1]=="+"):
                     correct = number1 + number2 == result
                 elif(answer[1]=="-"):
                     correct = number1 - number2 == result

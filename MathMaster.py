@@ -74,7 +74,7 @@ def game():
                         "123 (Will mix gamemode 1, 2 and 3)\n")
 
 
-            while (not(isNumeral(mix)) or not containsNotTheSameChr(mix)):
+            while (len(mix) == 1 or not(isNumeral(mix)) or not containsNotTheSameChr(mix)):
                 print("\n----\nPlease provide a valid mix\n----")
                 mix = input("Wich gamemodes do you want to mix together ?\n"
                             "You can mix all gamemodes together if you want !\n"
@@ -103,6 +103,34 @@ def game():
             if (hasGamemode3): gamemodesSelected.append(3)
             if (hasGamemode4): gamemodesSelected.append(4)
             if (hasGamemode5): gamemodesSelected.append(5)
+
+            while (len(gamemodesSelected)<=1):
+                print("\n----\nPlease provide a valid mix\n----")
+                mix = input("Wich gamemodes do you want to mix together ?\n"
+                            "You can mix all gamemodes together if you want !\n"
+                            "Type the gamemodes you want to mix like the example:\n"
+                            "123 (Will mix gamemode 1, 2 and 3)\n")
+                hasGamemode1 = False
+                hasGamemode2 = False
+                hasGamemode3 = False
+                hasGamemode4 = False
+                hasGamemode5 = False
+
+                for k in range(len(mix)):
+
+                    if not (hasGamemode1): hasGamemode1 = mix[k] == "1"
+                    if not (hasGamemode2): hasGamemode2 = mix[k] == "2"
+                    if not (hasGamemode3): hasGamemode3 = mix[k] == "3"
+                    if not (hasGamemode4): hasGamemode4 = mix[k] == "4"
+                    if not (hasGamemode5): hasGamemode5 = mix[k] == "5"
+
+                gamemodesSelected = []
+
+                if (hasGamemode1): gamemodesSelected.append(1)
+                if (hasGamemode2): gamemodesSelected.append(2)
+                if (hasGamemode3): gamemodesSelected.append(3)
+                if (hasGamemode4): gamemodesSelected.append(4)
+                if (hasGamemode5): gamemodesSelected.append(5)
 
             announcement = "Okay ! You have selected gamemodes "
             for k in range(len(gamemodesSelected)):

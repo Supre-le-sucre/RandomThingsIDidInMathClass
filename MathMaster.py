@@ -71,7 +71,7 @@ def game():
             mix = input("Wich gamemodes do you want to mix together ?\n"
                         "You can mix all gamemodes together if you want !\n"
                         "Type the gamemodes you want to mix like the example:\n"
-                        "123 (Will mix gamemode 1, 2 and 3)")
+                        "123 (Will mix gamemode 1, 2 and 3)\n")
 
 
             while (not(isNumeral(mix)) or not containsNotTheSameChr(mix)):
@@ -79,7 +79,7 @@ def game():
                 mix = input("Wich gamemodes do you want to mix together ?\n"
                             "You can mix all gamemodes together if you want !\n"
                             "Type the gamemodes you want to mix like the example:\n"
-                            "123 (Will mix gamemode 1, 2 and 3)")
+                            "123 (Will mix gamemode 1, 2 and 3)\n")
 
 
             hasGamemode1 = False

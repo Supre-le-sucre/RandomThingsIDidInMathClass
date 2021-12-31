@@ -213,7 +213,6 @@ def gamemode(gamemode):
     else:
         operation = " * "
         result = a * b
-    result = 0
     if(gamemode == 1):
         answer = input(str(a) + operation + str(b) + " = ?\n")
         correct = False

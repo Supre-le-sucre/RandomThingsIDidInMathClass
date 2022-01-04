@@ -242,18 +242,19 @@ def gamemode(gamemode):
     a = randint(1, 9)
     b = randint(1, 9)
     operation = randint(1, 3)
+    operation_string = ""
     result = 0
     if (operation == 1):
-        operation = " + "
+        operation_string = " + "
         result = a + b
     elif (operation == 2):
-        operation = " - "
+        operation_string = " - "
         result = a - b
     else:
-        operation = " * "
+        operation_string = " * "
         result = a * b
     if(gamemode == 1):
-        answer = input(str(a) + operation + str(b) + " = ?\n")
+        answer = input(str(a) + operation_string + str(b) + " = ?\n")
         correct = False
         if(isNumeral(answer, True)):
             answer = int(answer)
@@ -280,7 +281,7 @@ def gamemode(gamemode):
         return point
 
     if(gamemode == 3):
-        answer = input(str(a) + operation + "? = " + str(result) + "\n")
+        answer = input(str(a) + operation_string + "? = " + str(result) + "\n")
         correct = False
         if(isNumeral(answer)):
             answer = int(answer)

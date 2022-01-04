@@ -288,11 +288,11 @@ def gamemode(gamemode):
             if (answer == 0):
                 print("0 is not valid !")
                 correct = False
-            elif(operation == " + "):
+            elif(operation == 1):
                 correct = a + answer == result
-            elif (operation == " - "):
+            elif (operation == 2):
                 correct = a - answer == result
-            elif (operation == " * "):
+            elif (operation == 3):
                 correct = a * answer == result
 
         if(correct):

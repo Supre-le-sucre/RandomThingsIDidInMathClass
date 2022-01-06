@@ -243,7 +243,7 @@ def gamemode(gamemode):
         operation_string = " + "
         result = a + b
     elif (operation == 2):
-        ooperation_string = " - "
+        operation_string = " - "
         result = a - b
     else:
         operation_string = " * "

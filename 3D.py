@@ -2,17 +2,22 @@ def main(debug=False):
     A = [0, 0, 0]
     B = [0, 0, 0]
     C = [0, 0, 0]
+    D = [0, 0, 0]
+    DIsDefine = False
     while True:
         user = input(">>> ")
-        if debug: print(user)
-
         # ---------------------
         if user == "h":
             # Help command
-            print("=-= Help =-= \na defines A etc. \npt returns defined points \npl returns a plan")
+            print("=-= Help =-= \na defines A etc. \npt returns defined points \npl returns a plan\ns stop the program")
         # ---------------------
         # ---------------------
-        elif user == "a" or user == "b" or user == "c":
+        elif user == "s":
+            print("To restart, use main()")
+            return 0
+        # ---------------------
+        # ---------------------
+        elif user == "a" or user == "b" or user == "c" or user == "d":
             coordinates = [0, 0, 0]
             if user == "a":
                 Invalid = True
@@ -71,6 +76,26 @@ def main(debug=False):
                     else:
                         C[n] = 0
 
+            if user == "d":
+                Invalid = True
+                while Invalid:
+                    coordinatesNotFormated = input("Provide coordinates: x,y,z\nc to cancel\n")
+                    if coordinatesNotFormated == "c":
+                        coordinates = (str(D[0]), str(D[1]), str(D[2]))
+                        Invalid = False
+                    else:
+                        coordinates = coordinatesNotFormated.split(",")
+                        if len(coordinates) != 3:
+                            Invalid = True
+                        else:
+                            Invalid = False
+                for n in range(3):
+                    DIsDefine = True
+                    if isNumeral(coordinates[n]):
+                        D[n] = int(coordinates[n])
+                    else:
+                        D[n] = 0
+
         # ---------------------
         # ---------------------
         elif user == "pt":
@@ -78,6 +103,8 @@ def main(debug=False):
             coordinatesFormat("A", A)
             coordinatesFormat("B", B)
             coordinatesFormat("C", C)
+            if DIsDefine:
+                coordinatesFormat("D", D)
         # ---------------------
         # ---------------------
         elif user == "pl":
@@ -187,11 +214,19 @@ def main(debug=False):
                     cartesianEquation += " - " + str(abs(d))
 
                 cartesianEquation += " = 0"
-                print(cartesianEquation)
+                print(cartesianEquation + "\n")
+
+                if DIsDefine:
+                    if isPointCoplanar(A, vectorN, D):
+                        print("D is coplanar with P")
+                    else:
+                        print("D isn't coplanar with P")
 
             else:
                 # There is no equation of plan to display because vectors are collinear
                 print("Nothing to see here :/")
+        else:
+            print("Command not found\ntype h to see commands")
 
 
 def coordinatesFormat(name, coordinates):
@@ -225,6 +260,21 @@ def isNumeral(str):
         if not str[n] in numbers:
             return False
     return True
+
+def isPointCoplanar(A,n,D):
+    # Given a point a and a normal vector n to create a cartesian equation, return if point d solve the cartesian
+    # equation
+    x = D[0]
+    y = D[1]
+    z = D[2]
+
+    a = n[0]
+    b = n[1]
+    c = n[2]
+
+    d = -a*A[0]-b*A[1]-c*A[2]
+
+    return a*x+b*y+c*z+d == 0
 
 
 main()

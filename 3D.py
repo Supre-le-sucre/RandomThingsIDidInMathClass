@@ -81,7 +81,7 @@ def main(debug=False):
                 while Invalid:
                     coordinatesNotFormated = input("Provide coordinates: x,y,z\nc to cancel\n")
                     if coordinatesNotFormated == "c":
-                        coordinates = (str(D[0]), str(D[1]), str(D[2]))
+                        coordinates = (str(int(D/commonDivisor)[0]), str(int(D/commonDivisor)[1]), str(int(D/commonDivisor)[2]))
                         Invalid = False
                     else:
                         coordinates = coordinatesNotFormated.split(",")
@@ -189,29 +189,30 @@ def main(debug=False):
                     if vectorN[i] != 0:
                         # This calculates the d at the end of the cartesian equation
                         d -= vectorN[i] + A[i]
+                        commonDivisor = gcd([vectorN[0], vectorN[1], vectorN[2], d])
                         if i == 0:
-                            cartesianEquation += str(vectorN[i]) + "x"
+                            cartesianEquation += str(int(vectorN[i]/commonDivisor)) + "x"
                         if i == 1:
                             if not cartesianEquation == "":
                                 if vectorN[i] > 0:
-                                    cartesianEquation += " + " + str(vectorN[i]) + "y"
+                                    cartesianEquation += " + " + str(int(vectorN[i]/commonDivisor)) + "y"
                                 else:
-                                    cartesianEquation += " - " + str(abs(vectorN[i])) + "y"
+                                    cartesianEquation += " - " + str(abs(int(vectorN[i]/commonDivisor))) + "y"
                             else:
-                                cartesianEquation += str(vectorN[i]) + "y"
+                                cartesianEquation += str(int(vectorN[i]/commonDivisor)) + "y"
                         if i == 2:
                             if not cartesianEquation == "":
                                 if vectorN[i] > 0:
-                                    cartesianEquation += " + " + str(vectorN[i]) + "z"
+                                    cartesianEquation += " + " + str(int(vectorN[i]/commonDivisor)) + "z"
                                 else:
-                                    cartesianEquation += " - " + str(abs(vectorN[i])) + "z"
+                                    cartesianEquation += " - " + str(abs(int(vectorN[i]/commonDivisor))) + "z"
                             else:
-                                cartesianEquation += str(vectorN[i]) + "z"
+                                cartesianEquation += str(int(vectorN[i]/commonDivisor)) + "z"
 
                 if d > 0:
-                    cartesianEquation += " + " + str(d)
+                    cartesianEquation += " + " + str(int(d/commonDivisor))
                 elif d < 0:
-                    cartesianEquation += " - " + str(abs(d))
+                    cartesianEquation += " - " + str(abs(int(d/commonDivisor)))
 
                 cartesianEquation += " = 0"
                 print(cartesianEquation + "\n")
@@ -275,6 +276,33 @@ def isPointCoplanar(A,n,D):
     d = -a*A[0]-b*A[1]-c*A[2]
 
     return a*x+b*y+c*z+d == 0
+
+def gcd(args):
+    if len(args) <= 1:
+        return 0
+    min = abs(args[0])
+    for n in range (len(args)):
+        args[n] = abs(args[n])
+        if args[n] < min:
+            min = args[n]
+    commonCoef = []
+    for i in range(1,min+1):
+        occur = 0
+        # We clear the variable of occurence, because the check is completed
+        for n in range(len(args)):
+            if args[n] % i == 0:
+                occur += 1
+                # Let's check if this happens everytime we check the number on the table
+                if occur == len(args):
+                    # The number was a divisor of every number of the list, we can add it to the main list
+                    commonCoef.append(i)
+                    break
+                else:
+                    continue
+
+    # At the end each common Divisor is on commonCoef, last one is the great common divisor we are looking for
+    gcd = commonCoef[len(commonCoef)-1]
+    return gcd
 
 
 main()

@@ -112,10 +112,8 @@ def main(debug=False):
             u = vectorCalc(A, B)
             v = vectorCalc(A, C)
             thereIsAPlan = True
-            k1 = u[0] - v[0]
-            k2 = u[1] - v[1]
-            k3 = u[2] - v[2]
-            if k1 == k2 == k3:
+            k = u[0] / v[0]
+            if v[1] * k == u[1] and v[2] * k == u[2]:
                 # Check if there is a coefficient between u and v
                 thereIsAPlan = False
 

@@ -81,7 +81,7 @@ def main(debug=False):
                 while Invalid:
                     coordinatesNotFormated = input("Provide coordinates: x,y,z\nc to cancel\n")
                     if coordinatesNotFormated == "c":
-                        coordinates = (str(int(D/commonDivisor)[0]), str(int(D/commonDivisor)[1]), str(int(D/commonDivisor)[2]))
+                        coordinates = (str(D)[0], str(D)[1], str(D)[2])
                         Invalid = False
                     else:
                         coordinates = coordinatesNotFormated.split(",")
@@ -112,7 +112,13 @@ def main(debug=False):
             u = vectorCalc(A, B)
             v = vectorCalc(A, C)
             thereIsAPlan = True
-            k = u[0] / v[0]
+            k = 1
+            if v[0] == 0 or v[1] == 0 or v[2] == 0 and (u[0] != 0 and u[1] != 0 and u[2] != 0):
+                thereIsAPlan = True
+            for n in range(3):
+                if v[n] != 0:
+                    k = u[n] / v[n]
+                    break
             if v[1] * k == u[1] and v[2] * k == u[2]:
                 # Check if there is a coefficient between u and v
                 thereIsAPlan = False
@@ -181,12 +187,15 @@ def main(debug=False):
 
                 cartesianEquation = ""
                 vectorN = normalVector(u, v)
+                if debug : print("Normal vector is " + str(vectorN))
 
                 d = 0
                 for i in range(3):
                     if vectorN[i] != 0:
+
                         # This calculates the d at the end of the cartesian equation
                         d -= vectorN[i] + A[i]
+                        if debug: print("Value of d is " + str(d))
                         commonDivisor = gcd([vectorN[0], vectorN[1], vectorN[2], d])
                         if i == 0:
                             cartesianEquation += str(int(vectorN[i]/commonDivisor)) + "x"
@@ -283,7 +292,7 @@ def gcd(args):
         args[n] = abs(args[n])
         if args[n] < min:
             min = args[n]
-    commonCoef = []
+    commonCoef = [1]
     for i in range(1,min+1):
         occur = 0
         # We clear the variable of occurence, because the check is completed
@@ -303,4 +312,4 @@ def gcd(args):
     return gcd
 
 
-main()
+main(False)

@@ -1,7 +1,7 @@
 def conway(n):
     term = "1"
     for i in range(n - 1):
-        print("Loading... "+str(i)+" / "+str(n))
+        print("Loading... "+str(i+1)+" / "+str(n))
         nextTerm = ""
         count = 0
         check = term[0]
